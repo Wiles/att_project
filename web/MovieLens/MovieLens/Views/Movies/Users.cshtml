@@ -21,14 +21,23 @@
     User Id: <input id="userId" type="text" /> <button id="usersSearch">Search</button>
 </p>
 
-<div style="width:49%;display:inline-block;">
-    <h2 style="text-align:center">User Ratings</h2>
-    <div id="ratingsResults">
-    </div>
-</div>
-
-<div style="width:49%;display:inline-block;">
-    <h2 style="text-align:center">Recommendations</h2>
-    <div id="recommendationResults">
-    </div>
-</div>
+<table style="width:100%;table-layout:fixed;">
+    <tr>
+        <td>
+            <h2 style="text-align:center">User Ratings</h2>
+        </td>
+        <td>
+            <h2 style="text-align:center">Recommendations</h2>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div id="ratingsResults">
+            </div>
+        </td>
+        <td>
+            <div id="recommendationResults">
+            </div>
+        </td>
+    </tr>
+</table>
