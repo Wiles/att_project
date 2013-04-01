@@ -5,15 +5,35 @@
 <script type="text/javascript">
     $(function () {
         $("#usersSearch").click(function () {
-            var id = $("#userId").val();
-            if (!isNaN(id) && id) {
+            $("#recommendationResults").html("");
+            var userId = $("#userId").val();
+            if (!isNaN(userId) && userId) {
                 $("#ratingsResults").load(
                     "@Url.Action("Ratings", "Movies")",
-                    { "userId" : id });
+                    { "userId" : userId },
+                    function () {
+                        $(".movie").click(function() {
+                            $("#recommendationResults").html("");
+                            var movieId = $(this).attr("data-id");
+                            $("#recommendationResults").load(
+                                "@Url.Action("Recommendations", "Movies")",
+                                {
+                                    "userId" : userId,
+                                    "movieId" : movieId
+                                });
+                        });
+                    });
             }
         });
     });
 </script>
+
+<style type="text/css">
+    .movie
+    {
+        cursor:pointer;
+    }
+</style>
 
 <h2>Users Search</h2>
 
@@ -31,11 +51,11 @@
         </td>
     </tr>
     <tr>
-        <td>
+        <td style="vertical-align:text-top;">
             <div id="ratingsResults">
             </div>
         </td>
-        <td>
+        <td style="vertical-align:text-top;">
             <div id="recommendationResults">
             </div>
         </td>

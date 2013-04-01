@@ -93,7 +93,8 @@ order by [count] desc, avgrating desc";
             var start = DateTime.Now;
 
             this.Connection.Open();
-            using (var reader = command.ExecuteReader(CommandBehavior.CloseConnection))
+
+            using (var reader = command.ExecuteReader())
             {
                 while (reader.Read())
                 {
@@ -107,6 +108,16 @@ order by [count] desc, avgrating desc";
             }
 
             model.ElapsedTime = DateTime.Now.Subtract(start).TotalMilliseconds;
+
+            var comm = new SqlCommand("select title from movies where id = @movieId", this.Connection);
+            comm.Parameters.Add(new SqlParameter("@movieId", movieId));
+            using (var reader = comm.ExecuteReader(CommandBehavior.CloseConnection))
+            {
+                while (reader.Read())
+                {
+                    model.MovieTitle = (string)reader["title"];
+                }
+            }
 
             return model;
         }

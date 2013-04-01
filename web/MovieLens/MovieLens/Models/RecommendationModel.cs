@@ -10,6 +10,14 @@ namespace MovieLens.Models
     public class RecommendationModel
     {
         /// <summary>
+        /// Gets or sets the movie title.
+        /// </summary>
+        /// <value>
+        /// The movie title.
+        /// </value>
+        public string MovieTitle { get; set; }
+
+        /// <summary>
         /// Gets or sets the movie id.
         /// </summary>
         /// <value>
