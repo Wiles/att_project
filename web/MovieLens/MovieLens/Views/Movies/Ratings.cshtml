@@ -3,7 +3,7 @@
 @foreach (var rating in Model.Ratings.OrderBy(r => r.MovieTitle))
 {
     <div>
-        <a class="movie" data-id="@rating.MovieId">[@rating.Stars] &mdash; @rating.MovieTitle</a>
+        [@rating.Stars] &mdash; @rating.MovieTitle
     </div>
 }
 

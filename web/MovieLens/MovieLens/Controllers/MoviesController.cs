@@ -61,11 +61,10 @@ namespace MovieLens.Controllers
         /// Action for recommendations results.
         /// </summary>
         /// <param name="userId">The user id.</param>
-        /// <param name="movieId">The movie id.</param>
         /// <returns>Recommendations partial view.</returns>
-        public ActionResult Recommendations(double userId, double movieId)
+        public ActionResult Recommendations(double userId)
         {
-            var recommendations = this.Service.GetRecommendations(movieId, userId);
+            var recommendations = this.Service.GetRecommendations(userId);
             return PartialView(recommendations);
         }
 

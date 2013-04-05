@@ -68,27 +68,26 @@ where user_id = @userId";
         /// <summary>
         /// Gets the recommendations.
         /// </summary>
-        /// <param name="movieId">The movie id.</param>
         /// <param name="userId">The user id.</param>
         /// <returns>A recommendations collection model.</returns>
-        public RecommendationModel GetRecommendations(double movieId, double userId)
+        public RecommendationModel GetRecommendations(double userId)
         {
             var model = new RecommendationModel();
             model.Recommendations = new Collection<Recommendation>();
-            model.MovieId = movieId;
 
             var query =
 @"select top 25 movie_id, m.title, AVG(rating) as avgrating, COUNT(rating) as [count]
   from ratings
   inner join movies as m
   on movie_id = m.id
-where movie_id != @movieId and [user_id] in (select [user_id] from ratings where [user_id] != @userId and movie_id = @movieId and rating >= 3)
+where  [user_id] in (select [user_id] from ratings where [user_id] != @userId and movie_id in (select movie_id from ratings where [user_id] = @userId and rating >= 3) and rating >= 3)
+ and movie_id not in (select movie_id from ratings where [user_id] = @userId and rating >= 3)
 group by movie_id, title
-order by [count] desc, avgrating desc";
+order by avgrating desc";
 
             var command = new SqlCommand(query, this.Connection);
-            command.Parameters.Add(new SqlParameter("@movieId", movieId));
             command.Parameters.Add(new SqlParameter("@userId", userId));
+            command.CommandTimeout = 600;
             
             var start = DateTime.Now;
 
@@ -108,17 +107,7 @@ order by [count] desc, avgrating desc";
             }
 
             model.ElapsedTime = DateTime.Now.Subtract(start).TotalMilliseconds;
-
-            var comm = new SqlCommand("select title from movies where id = @movieId", this.Connection);
-            comm.Parameters.Add(new SqlParameter("@movieId", movieId));
-            using (var reader = comm.ExecuteReader(CommandBehavior.CloseConnection))
-            {
-                while (reader.Read())
-                {
-                    model.MovieTitle = (string)reader["title"];
-                }
-            }
-
+            
             return model;
         }
     }

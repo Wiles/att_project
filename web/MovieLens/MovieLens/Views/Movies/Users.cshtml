@@ -12,30 +12,23 @@
                     "@Url.Action("Ratings", "Movies")",
                     { "userId" : userId },
                     function () {
-                        $(".movie").click(function() {
-                            $("#recommendationResults").html("");
-                            var movieId = $(this).attr("data-id");
-                            $("#recommendationResults").load(
-                                "@Url.Action("Recommendations", "Movies")",
-                                {
-                                    "userId" : userId,
-                                    "movieId" : movieId
-                                });
-                        });
+                        $("#recommendationResults").html("Loading recommendations...");
+                        $("#recommendationResults").load(
+                            "@Url.Action("Recommendations", "Movies")",
+                            {
+                                "userId" : userId
+                            });
                     });
             }
         });
     });
 </script>
 
-<style type="text/css">
-    .movie
-    {
-        cursor:pointer;
-    }
-</style>
-
 <h2>Users Search</h2>
+
+<p>
+    This is our complex benchmarking query.
+</p>
 
 <p>
     User Id: <input id="userId" type="text" /> <button id="usersSearch">Search</button>
