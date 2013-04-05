@@ -6,14 +6,9 @@ using System.Web.Mvc;
 
 namespace MvcWebRole1.Controllers
 {
-    public class HomeController : Controller
+    public class ServiceController : Controller
     {
         public ActionResult Index()
-        {
-            return View();
-        }
-
-        public ActionResult About()
         {
             return View();
         }
