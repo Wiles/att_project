@@ -1,0 +1,18 @@
+﻿@model MvcWebRole1.Models.RecommendationModel
+           
+<div>
+You may like...
+</div>
+
+<br />
+
+@foreach (var rec in Model.Recommendations.OrderByDescending(r => r.Stars))
+{
+    <div>
+        [@rec.Stars.ToString("0.0")] (@rec.Count) &mdash; @rec.MovieTitle
+    </div>
+}
+
+<br />
+
+<div>Elapsed Time: @Model.ElapsedTime ms</div>

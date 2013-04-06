@@ -1,0 +1,56 @@
+﻿@{
+    ViewBag.Title = "Users Search";
+}
+
+<script type="text/javascript">
+    $(function () {
+        $("#usersSearch").click(function () {
+            $("#recommendationResults").html("");
+            var userId = $("#userId").val();
+            if (!isNaN(userId) && userId) {
+                $("#ratingsResults").load(
+                    "@Url.Action("Ratings", "Home")",
+                    { "userId" : userId },
+                    function () {
+                        $("#recommendationResults").html("Loading recommendations...");
+                        $("#recommendationResults").load(
+                            "@Url.Action("Recommendations", "Home")",
+                            {
+                                "userId" : userId
+                            });
+                    });
+            }
+        });
+    });
+</script>
+
+<h2>Users Search</h2>
+
+<p>
+    This is our complex benchmarking query.
+</p>
+
+<p>
+    User Id: <input id="userId" type="text" /> <button id="usersSearch">Search</button>
+</p>
+
+<table style="width:100%;table-layout:fixed;">
+    <tr>
+        <td>
+            <h2 style="text-align:center">User Ratings</h2>
+        </td>
+        <td>
+            <h2 style="text-align:center">Recommendations</h2>
+        </td>
+    </tr>
+    <tr>
+        <td style="vertical-align:text-top;">
+            <div id="ratingsResults">
+            </div>
+        </td>
+        <td style="vertical-align:text-top;">
+            <div id="recommendationResults">
+            </div>
+        </td>
+    </tr>
+</table>

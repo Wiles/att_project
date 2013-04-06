@@ -1,0 +1,13 @@
+﻿@model MvcWebRole1.Models.RatingsModel
+
+@foreach (var rating in Model.Ratings.OrderBy(r => r.MovieTitle))
+{
+    <div>
+        [@rating.Stars] &mdash; @rating.MovieTitle
+    </div>
+}
+
+<br />
+
+<div>Ratings: @Model.Ratings.Count</div>
+<div>Elapsed Time: @Model.ElapsedTime ms</div>
