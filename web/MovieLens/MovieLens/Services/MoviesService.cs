@@ -110,5 +110,49 @@ order by avgrating desc";
             
             return model;
         }
+
+        /// <summary>
+        /// Gets the recommendations by movie.
+        /// </summary>
+        /// <param name="movieId">The movie id.</param>
+        public RecommendationModel GetRecommendationsByMovie(double movieId)
+        {
+            var model = new RecommendationModel();
+            model.Recommendations = new Collection<Recommendation>();
+
+            var query =
+@"select top 25 movie_id, m.title, AVG(rating) as avgrating, COUNT(rating) as [count]
+  from ratings
+  inner join movies as m
+  on movie_id = m.id
+where movie_id != @movieId and [user_id] in (select [user_id] from ratings where movie_id = @movieId and rating >= 3)
+group by movie_id, title
+order by avgrating desc";
+
+            var command = new SqlCommand(query, this.Connection);
+            command.Parameters.Add(new SqlParameter("@movieId", movieId));
+            command.CommandTimeout = 600;
+
+            var start = DateTime.Now;
+
+            this.Connection.Open();
+
+            using (var reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    var r = new Recommendation();
+                    r.MovieTitle = (string)reader["title"];
+                    r.MovieId = (Int64)reader["movie_id"];
+                    r.Stars = (decimal)reader["avgrating"];
+                    r.Count = (int)reader["count"];
+                    model.Recommendations.Add(r);
+                }
+            }
+
+            model.ElapsedTime = DateTime.Now.Subtract(start).TotalMilliseconds;
+
+            return model;
+        }
     }
 }

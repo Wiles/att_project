@@ -2,4 +2,28 @@
     ViewBag.Title = "Movies Search";
 }
 
+<script type="text/javascript">
+    $(function () {
+        $("#moviesSearch").click(function () {
+            var movieId = $("#movieId").val();
+            if (!isNaN(movieId) && movieId) {
+                $("#recommendationResults").load(
+                    "@Url.Action("RecommendByMovie", "Movies")",
+                    { "movieId" : movieId });
+            }
+        });
+    });
+</script>
+
 <h2>Movies Search</h2>
+
+<p>
+    This is our simpler benchmarking query.
+</p>
+
+<p>
+    Movie Id: <input id="movieId" type="text" /> <button id="moviesSearch">Search</button>
+</p>
+
+<div id="recommendationResults">
+</div>

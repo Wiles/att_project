@@ -78,21 +78,14 @@ namespace MovieLens.Controllers
         }
 
         /// <summary>
-        /// Action for the tags page.
+        /// Recommends movies by movie.
         /// </summary>
-        /// <returns>Tags view.</returns>
-        public ActionResult Tags()
+        /// <param name="movieId">The movie id.</param>
+        /// <returns>Recommendations by movie partial view</returns>
+        public ActionResult RecommendByMovie(double movieId)
         {
-            return View();
-        }
-
-        /// <summary>
-        /// Action for the genres page.
-        /// </summary>
-        /// <returns>Genres view.</returns>
-        public ActionResult Genres()
-        {
-            return View();
+            var recommendations = this.Service.GetRecommendationsByMovie(movieId);
+            return PartialView("Recommendations", recommendations);
         }
     }
 }

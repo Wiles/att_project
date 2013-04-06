@@ -157,12 +157,6 @@
     <Content Include="Views\Movies\Movies.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Movies\Tags.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Movies\Genres.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Views\Movies\Ratings.cshtml" />
   </ItemGroup>
   <ItemGroup>
