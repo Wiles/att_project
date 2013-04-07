@@ -11,7 +11,7 @@ namespace MvcWebRole1.Controllers
     {
         public HomeController()
         {
-            this.Service = new DistributedService("http://localhost:81");
+            this.Service = new DistributedService("http://localhost:81", "http://tkempton.cloudapp.net/");
         }
 
         public DistributedService Service { get; set; }
