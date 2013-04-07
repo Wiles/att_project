@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <AzureCredentials>Azpad188G5A3254</AzureCredentials>
+    <AzureCredentials>hkhani</AzureCredentials>
     <AzureDeleteDeploymentOnFailure>False</AzureDeleteDeploymentOnFailure>
     <AzureDeploymentLabel>MovieLensAzure</AzureDeploymentLabel>
     <AzureDeploymentReplacementMethod>AutomaticUpgrade</AzureDeploymentReplacementMethod>
@@ -9,14 +9,14 @@
     <AzureEnableRemoteDesktop>True</AzureEnableRemoteDesktop>
     <AzureEnableWebDeploy>False</AzureEnableWebDeploy>
     <AzureFallbackToDeleteAndRecreateIfUpgradeFails>False</AzureFallbackToDeleteAndRecreateIfUpgradeFails>
-    <AzureHostedServiceLabel>tkempton</AzureHostedServiceLabel>
-    <AzureHostedServiceName>tkempton</AzureHostedServiceName>
+    <AzureHostedServiceLabel>hekarwebrole</AzureHostedServiceLabel>
+    <AzureHostedServiceName>hekarwebrole</AzureHostedServiceName>
     <AzureEnableIntelliTrace>False</AzureEnableIntelliTrace>
     <AzureEnableProfiling>False</AzureEnableProfiling>
     <AzureServiceConfiguration>Cloud</AzureServiceConfiguration>
     <AzureSolutionConfiguration>Release</AzureSolutionConfiguration>
-    <AzureStorageAccountLabel>tkempton</AzureStorageAccountLabel>
-    <AzureStorageAccountName>tkempton</AzureStorageAccountName>
+    <AzureStorageAccountLabel>hekarwebrole</AzureStorageAccountLabel>
+    <AzureStorageAccountName>hekarwebrole</AzureStorageAccountName>
     <AzureAppendTimestampToDeploymentLabel>True</AzureAppendTimestampToDeploymentLabel>
   </PropertyGroup>
 </Project>

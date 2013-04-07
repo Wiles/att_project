@@ -51,6 +51,8 @@
   </ItemGroup>
   <ItemGroup>
     <PublishProfile Include="Profiles\tkemptonProduction.azurePubxml" />
+    <PublishProfile Include="Profiles\slewisProduction.azurePubxml" />
+    <PublishProfile Include="Profiles\hkhaniProduction.azurePubxml" />
   </ItemGroup>
   <!-- Import the target files for this project template -->
   <PropertyGroup>
