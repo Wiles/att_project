@@ -53,7 +53,6 @@ namespace MovieLens.Controllers
         public ActionResult Ratings(double userId)
         {
             var ratings = this.Service.GetRatings(userId);
-
             return PartialView(ratings);
         }
 

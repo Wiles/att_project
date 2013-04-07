@@ -4,6 +4,9 @@ using System.Linq;
 using System.Web;
 using MvcWebRole1.Models;
 using System.Collections.ObjectModel;
+using System.Net;
+using System.IO;
+using MvcWebRole1.Models.DataModels;
 
 namespace MvcWebRole1.Services
 {
@@ -28,7 +31,19 @@ namespace MvcWebRole1.Services
 
         public RatingsModel GetRatings(double userId)
         {
-            throw new NotImplementedException();
+            var model = new RatingsModel();
+
+            var url = this.WorkerUrls.First();
+
+            var str = url.ToString() + "/Service/Ratings?userId=" + userId;
+
+            var start = DateTime.Now;
+
+            model.Ratings = RequestHelper.Call<Collection<Rating>>(str);
+
+            model.ElapsedTime = DateTime.Now.Subtract(start).TotalMilliseconds;
+
+            return model;
         }
 
         public RecommendationModel GetRecommendations(double userId)
