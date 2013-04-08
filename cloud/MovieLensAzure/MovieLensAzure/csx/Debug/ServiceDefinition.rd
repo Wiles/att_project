@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<serviceModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="MovieLensAzure" generation="1" functional="0" release="0" Id="093867db-5b06-4722-ba9d-5534d5e58406" dslVersion="1.2.0.0" xmlns="http://schemas.microsoft.com/dsltools/RDSM">
+<serviceModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="MovieLensAzure" generation="1" functional="0" release="0" Id="650af6d8-d6f1-4ebc-b683-317931280e5c" dslVersion="1.2.0.0" xmlns="http://schemas.microsoft.com/dsltools/RDSM">
   <groups>
     <group name="MovieLensAzureGroup" generation="1" functional="0" release="0">
       <componentports>
@@ -70,9 +70,9 @@
     </group>
   </groups>
   <implements>
-    <implementation Id="81fd06f4-b5eb-46c9-ab14-d0de2bd375c5" ref="Microsoft.RedDog.Contract\ServiceContract\MovieLensAzureContract@ServiceDefinition">
+    <implementation Id="a4cccdf1-d408-4000-83d9-fb35fbad166e" ref="Microsoft.RedDog.Contract\ServiceContract\MovieLensAzureContract@ServiceDefinition">
       <interfacereferences>
-        <interfaceReference Id="6e4c2165-a2e1-4076-93d1-1d900250a02a" ref="Microsoft.RedDog.Contract\Interface\MvcWebRole1:Endpoint1@ServiceDefinition">
+        <interfaceReference Id="d5092c68-70ad-4d8e-a519-d0aae860243f" ref="Microsoft.RedDog.Contract\Interface\MvcWebRole1:Endpoint1@ServiceDefinition">
           <inPort>
             <inPortMoniker name="/MovieLensAzure/MovieLensAzureGroup/MvcWebRole1:Endpoint1" />
           </inPort>
